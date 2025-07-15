@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whoami - r4gh4v</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00ff41; /* Bright Green */
+            --secondary-color: #008020; /* Darker Green */
+            --background-color: #0d0d0d; /* Near Black */
+            --text-color: #e0e0e0; /* Off-white */
+            --card-bg-color: rgba(10, 25, 10, 0.3); /* Translucent Greenish Black */
+            --card-border-color: rgba(0, 255, 65, 0.2);
+            --card-hover-border-color: rgba(0, 255, 65, 0.8);
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Fira Code', monospace;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(var(--secondary-color) 1px, transparent 1px),
+                radial-gradient(var(--secondary-color) 1px, var(--background-color) 1px);
+            background-position: 0 0, 25px 25px;
+            background-size: 50px 50px;
+        }
+
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .text-glow {
+            color: var(--primary-color);
+            text-shadow:
+                0 0 5px var(--primary-color),
+                0 0 10px var(--primary-color),
+                0 0 20px var(--secondary-color),
+                0 0 40px var(--secondary-color);
+        }
+
+        .typed-cursor {
+            opacity: 1;
+            font-weight: 100;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .hacker-card {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--card-border-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hacker-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--card-hover-border-color);
+            box-shadow: 0 0 25px var(--card-border-color);
+        }
+
+        .glitch-text {
+            position: relative;
+            color: var(--primary-color);
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--background-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300">
+
+    <canvas id="matrix-canvas" class="fixed top-0 left-0 w-full h-full z-0 opacity-20"></canvas>
+
+    <div class="relative z-10 p-4 sm:p-6 lg:p-8">
+
+      <section class="min-h-screen flex flex-col items-center justify-center text-center fade-in-section is-visible">
+            <h1 class="font-orbitron text-4xl sm:text-6xl md:text-7xl font-bold text-glow">r4gh4v</h1>
+            <p class="mt-4 text-lg sm:text-xl md:text-2xl text-gray-400">
+                <span id="typed-roles"></span>
+            </p>
+        </section>
+
+        <!-- ABOUT / WHOAMI SECTION -->
+        <section id="whoami" class="max-w-4xl mx-auto my-20 fade-in-section">
+            <h2 class="font-orbitron text-3xl text-glow mb-6 text-center">INITIATE: whoami</h2>
+            <div class="hacker-card p-6 rounded-lg">
+                <p class="text-lg leading-relaxed">
+                    I am a cybersecurity professional with a deep passion for offensive security. My expertise spans across the digital battlefield, from identifying critical vulnerabilities in complex systems to developing sophisticated malware for red team engagements. I thrive on deconstructing defenses, understanding threat actor TTPs, and building resilient security postures from an adversarial perspective. My goal is to push the boundaries of security, one exploit at a time.
+                </p>
+            </div>
+        </section>
+
+        <!-- PLATFORMS SECTION -->
+        <section id="platforms" class="max-w-6xl mx-auto my-20 fade-in-section">
+            <h2 class="font-orbitron text-3xl text-glow mb-8 text-center">PLATFORM_PROFILES</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- HackerOne Card -->
+                <a href="https://hackerone.com/ir4gh4v" target="_blank" class="hacker-card rounded-lg p-6 block">
+                    <h3 class="font-orbitron text-2xl mb-2 glitch-text">HackerOne</h3>
+                    <p class="text-gray-400">Engaging with top-tier programs to secure the internet. View my disclosed reports and reputation.</p>
+                </a>
+                <!-- Bugcrowd Card -->
+                <a href="https://bugcrowd.com/h/r4gh4v" target="_blank" class="hacker-card rounded-lg p-6 block">
+                    <h3 class="font-orbitron text-2xl mb-2 glitch-text">Bugcrowd</h3>
+                    <p class="text-gray-400">A part of the crowd, hunting for vulnerabilities and earning accolades.</p>
+                </a>
+                <!-- Intigriti Card -->
+                <a href="https://app.intigriti.com/researcher/profile/r4gh4v" target="_blank" class="hacker-card rounded-lg p-6 block">
+                    <h3 class="font-orbitron text-2xl mb-2 glitch-text">Intigriti</h3>
+                    <p class="text-gray-400">Collaborating with European platforms on unique and challenging targets.</p>
+                </a>
+                 <!-- GitHub Card -->
+                <a href="https://github.com/ir4gh4v" target="_blank" class="hacker-card rounded-lg p-6 block">
+                    <h3 class="font-orbitron text-2xl mb-2 glitch-text">GitHub</h3>
+                    <p class="text-gray-400">Repository of my public tools, scripts, and research projects. Code is law.</p>
+                </a>
+                 <!-- LinkedIn Card -->
+                <a href="https://linkedin.com/in/ir4gh4v" target="_blank" class="hacker-card rounded-lg p-6 block">
+                    <h3 class="font-orbitron text-2xl mb-2 glitch-text">LinkedIn</h3>
+                    <p class="text-gray-400">My corporate persona. Connecting with industry professionals and sharing insights.</p>
+                </a>
+                 <!-- Twitter/X Card -->
+                <a href="https://twitter.com/ir4gh4v" target="_blank" class="hacker-card rounded-lg p-6 block">
+                    <h3 class="font-orbitron text-2xl mb-2 glitch-text">Twitter / X</h3>
+                    <p class="text-gray-400">Real-time thoughts on cybersecurity, new exploits, and infosec chatter.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- PROJECTS & TOOLS SECTION -->
+        <section id="projects" class="max-w-6xl mx-auto my-20 fade-in-section">
+            <h2 class="font-orbitron text-3xl text-glow mb-8 text-center">PROJECTS & ARSENAL</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="hacker-card rounded-lg p-6">
+                    <h3 class="font-orbitron text-2xl mb-2 glitch-text">Loading</h3>
+                    <p class="text-gray-400 mb-4">coming soon</p>
+                    <a href="#" class="text-green-400 hover:text-green-200 font-bold">View on GitHub &rarr;</a>
+                </div>
+                <!-- Project 2 -->
+                <div class="hacker-card rounded-lg p-6">
+                    <h3 class="font-orbitron text-2xl mb-2 glitch-text">Loading</h3>
+                    <p class="text-gray-400 mb-4">coming soon</p>
+                    <a href="#" class="text-green-400 hover:text-green-200 font-bold">View on GitHub &rarr;</a>
+                </div>
+                 <!-- Project 3 -->
+                <div class="hacker-card rounded-lg p-6">
+                    <h3 class="font-orbitron text-2xl mb-2 glitch-text">Loading</h3>
+                    <p class="text-gray-400 mb-4">coming soon</p>
+                    <a href="#" class="text-green-400 hover:text-green-200 font-bold">Read Research Paper &rarr;</a>
+                </div>
+                 <!-- Project 4 -->
+                <div class="hacker-card rounded-lg p-6">
+                    <h3 class="font-orbitron text-2xl mb-2 glitch-text">soscrapper</h3>
+                    <p class="text-gray-400 mb-4">A browser extension that simply Crawl Social Media links helpful to find low hanging Broken Link Hijacking runs in Background</p>
+                    <a href="https://chromewebstore.google.com/detail/soscraper/ibclgidogbomaeiaendoenflhlolklmi?authuser=0&hl=en" class="text-green-400 hover:text-green-200 font-bold">View on Chrome Store &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center py-10 fade-in-section">
+            <p class="text-gray-500">Session terminated. | r4gh4v &copy; 2025</p>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript for animations -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- TYPING ANIMATION ---
+            new Typed('#typed-roles', {
+                strings: ['Security Researcher', 'Red Teamer', 'Malware Developer', 'Bug Bounty Hunter', 'Web Devloper'],
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 1500,
+                loop: true,
+                smartBackspace: true,
+                cursorChar: '_',
+            });
+
+            // --- SCROLL-BASED FADE-IN ANIMATION ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // --- MATRIX BACKGROUND ANIMATION ---
+            const canvas = document.getElementById('matrix-canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}';
+            const fontSize = 16;
+            const columns = canvas.width / fontSize;
+
+            const drops = [];
+            for (let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+
+            function drawMatrix() {
+                ctx.fillStyle = 'rgba(13, 13, 13, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = '#00ff41'; // Green text
+                ctx.font = fontSize + 'px Fira Code';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = letters[Math.floor(Math.random() * letters.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            const matrixInterval = setInterval(drawMatrix, 40);
+
+            // --- RESIZE HANDLER ---
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+            });
+        });
+    </script>
+</body>
+</html>
